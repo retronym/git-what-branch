@@ -395,6 +395,8 @@ foreach my $f (@ARGV)
 	      my $newm = describep($mp);
 	      my $ctime = shift(@{$brtree{$br}->{'committimes'}});
 	      printf("  merged to %-${maxlen}s \@@{[scalar(localtime($ctime))]}\n",$newm);
+        $cmd = "git show $mp | grep 'pull request'";
+        printf(`$cmd`);
 	      $last = $newm;
 	    }
 	    print "  $last is on @{[describep($br)]}\n";
